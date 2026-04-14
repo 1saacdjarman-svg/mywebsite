@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BYU Campus Life Simulator</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #e8f0ff, #ffffff);
+    color: #1b2a41;
+}
+
+header {
+    background: #012a4a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: #dbe7ff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 22%;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    background: #01497c;
+    color: white;
+}
+
+button:hover {
+    background: #013a63;
+}
+
+.small {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+#story {
+    font-size: 18px;
+    line-height: 1.5;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎓 BYU Campus Life Simulator</h1>
+    <p>Balance school, social life, money, and sanity</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Your Stats</h2>
+        <div class="stats">
+            <div class="stat">Energy: <span id="energy">100</span></div>
+            <div class="stat">GPA: <span id="gpa">3.5</span></div>
+            <div class="stat">Social: <span id="social">50</span></div>
+            <div class="stat">Money: $<span id="money">200</span></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Campus Event</h2>
+        <p id="story">Welcome to BYU! It’s your first week. What do you do?</p>
+
+        <button onclick="choice(1)">Go to class 📚</button>
+        <button onclick="choice(2)">Hang out with friends 🎉</button>
+        <button onclick="choice(3)">Get a campus job 💼</button>
+    </div>
+
+    <div class="card">
+        <h2>Actions</h2>
+
+        <button onclick="study()">Study Hard 📖</button>
+        <button onclick="rest()">Sleep 😴</button>
+        <button onclick="randomEvent()">Random Event 🎲</button>
+        <button onclick="resetGame()">Reset Game 🔄</button>
+
+        <p class="small">Tip: Keep GPA above 2.0 or you fail out!</p>
+    </div>
+
+</div>
+
+<script>
+
+let energy = 100;
+let gpa = 3.5;
+let social = 50;
+let money = 200;
+
+function updateStats() {
+    document.getElementById("energy").innerText = energy;
+    document.getElementById("gpa").innerText = gpa.toFixed(2);
+    document.getElementById("social").innerText = social;
+    document.getElementById("money").innerText = money;
+
+    if (gpa < 2.0) {
+        document.getElementById("story").innerText =
+            "📉 You failed out of BYU... maybe try more studying next time.";
+    }
+
+    if (energy <= 0) {
+        document.getElementById("story").innerText =
+            "😵 You burned out completely and need a semester break.";
+    }
+
+    if (money < 0) {
+        document.getElementById("story").innerText =
+            "💸 You ran out of money and had to move home.";
+    }
+}
+
+function choice(option) {
+
+    if (option === 1) {
+        energy -= 15;
+        gpa += 0.1;
+        social -= 5;
+        document.getElementById("story").innerText =
+            "You attended class and took solid notes.";
+    }
+
+    if (option === 2) {
+        energy -= 10;
+        social += 15;
+        gpa -= 0.05;
+        document.getElementById("story").innerText =
+            "You hung out with friends at the Wilk. Good vibes.";
+    }
+
+    if (option === 3) {
+        money += 50;
+        energy -= 20;
+        social -= 10;
+        document.getElementById("story").innerText =
+            "You got a campus job at Cougareat. Busy but profitable.";
+    }
+
+    updateStats();
+}
+
+function study() {
+    energy -= 20;
+    gpa += 0.2;
+    document.getElementById("story").innerText =
+        "You locked in and studied hard. GPA improving!";
+    updateStats();
+}
+
+function rest() {
+    energy += 25;
+    social -= 5;
+    document.getElementById("story").innerText =
+        "You slept and recovered energy.";
+    updateStats();
+}
+
+function randomEvent() {
+
+    let events = [
+        "You ran into a professor who gave you extra credit.",
+        "You got distracted and wasted 2 hours on TikTok.",
+        "Free pizza on campus! Social life boosted.",
+        "Midterm surprise quiz 😬",
+        "You found $20 on the ground!"
+    ];
+
+    let event = events[Math.floor(Math.random() * events.length)];
+    document.getElementById("story").innerText = event;
+
+    if (event.includes("extra credit")) gpa += 0.2;
+    if (event.includes("TikTok")) energy -= 10;
+    if (event.includes("pizza")) social += 10;
+    if (event.includes("quiz")) gpa -= 0.2;
+    if (event.includes("$20")) money += 20;
+
+    updateStats();
+}
+
+function resetGame() {
+    energy = 100;
+    gpa = 3.5;
+    social = 50;
+    money = 200;
+
+    document.getElementById("story").innerText =
+        "You restart your BYU journey fresh!";
+
+    updateStats();
+}
+
+</script>
+
+</body>
+</html>
