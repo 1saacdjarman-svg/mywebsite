@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Hiking Passion</title>
+    <link rel="stylesheet" href="../css/mystyles.css">
+</head>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="#top">Home</a>
+        <a href="#video">Video</a>
+        <a href="#tableau">Data</a>
+        <a href="index.html">Back to Professional Page</a>
+        <a href="byu-sim.html">BYU Sim</a>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header" id="top">
+        <h1>Hiking Adventures</h1>
+        <p>Exploring nature one trail at a time</p>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+
+        <h2>Why I Love Hiking</h2>
+        <p>Hiking is a great way to disconnect and enjoy nature.</p>
+
+        <!-- Ordered list with unordered inside -->
+        <ol>
+            <li>Physical Benefits
+                <ul>
+                    <li>Improves cardiovascular health</li>
+                    <li>Builds strength</li>
+                    <li>Boosts endurance</li>
+                </ul>
+            </li>
+            <li>Mental Benefits
+                <ul>
+                    <li>Reduces stress</li>
+                    <li>Improves mood</li>
+                </ul>
+            </li>
+        </ol>
+
+        <!-- Image -->
+        <h2>Beautiful Trails</h2>
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Mountain Hiking">
+
+    </div>
+
+    <!-- Video Section -->
+    <div class="video" id="video">
+        <h2>Watch Hiking in Action</h2>
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/Scxs7L0vhZ4"
+            title="YouTube video player"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- Tableau Section -->
+ <div class="tableau" id="tableau">
+    <h2>Interactive Data Visualization</h2>
+
+    <div class='tableauPlaceholder' style='width: 100%; max-width: 900px; height: 700px; margin: auto;'>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='RegionalSampleWorkbook/Storms' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+        </object>
+    </div>
+</div>
+
+<script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
+</div>
+
+<script type='text/javascript'>
+    var divElement = document.getElementById('vizDiv');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+    vizElement.style.width='100%';
+    vizElement.style.height='600px';
+
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz168');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width='800px';
+            vizElement.style.height='600px';
+        </script>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2026 My Hiking Page</p>
+    </div>
+
+</body>
+</html>
